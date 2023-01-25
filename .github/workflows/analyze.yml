@@ -48,7 +48,9 @@ jobs:
                            libcurl4-openssl-dev \
                            zipcmp \
                            zipmerge \
-                           ziptool
+                           ziptool \
+                           glslang-dev \
+                           libwayland-dev
       - name: Generate build files
         env:
           CC: /usr/bin/clang-12
