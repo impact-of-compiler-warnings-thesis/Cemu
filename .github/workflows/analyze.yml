@@ -45,7 +45,8 @@ jobs:
                            libsecret-1-dev \
                            libsystemd-dev \
                            nasm \
-                           libcurl4-openssl-dev
+                           libcurl4-openssl-dev \
+                           zipcmp
       - name: Generate build files
         env:
           CC: /usr/bin/clang-12
