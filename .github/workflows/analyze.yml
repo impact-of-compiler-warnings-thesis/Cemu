@@ -50,6 +50,7 @@ jobs:
                            zipmerge \
                            ziptool \
                            glslang-dev \
+                           glslang-tools \
                            libwayland-dev
       - name: Generate build files
         env:
