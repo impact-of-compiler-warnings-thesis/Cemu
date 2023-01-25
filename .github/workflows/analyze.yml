@@ -47,7 +47,8 @@ jobs:
                            nasm \
                            libcurl4-openssl-dev \
                            zipcmp \
-                           zipmerge
+                           zipmerge \
+                           ziptool
       - name: Generate build files
         env:
           CC: /usr/bin/clang-12
