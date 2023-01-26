@@ -23,19 +23,10 @@ jobs:
           sudo apt update
           sudo apt install ninja-build \
                            clang-12 \
-                           libsdl2-dev \
-                           libpugixml-dev \
-                           rapidjson-dev \
-                           libboost-all-dev \
                            libzip-dev \
                            glslang-dev \
-                           zlib1g-dev \
-                           libzstd-dev \
                            openssl \
-                           libglm-dev \
-                           libfmt-dev \
                            libpng-dev \
-                           libwxgtk* \
                            libgl-dev \
                            libcubeb-dev \
                            freeglut3-dev \
@@ -51,24 +42,23 @@ jobs:
                            ziptool \
                            glslang-dev \
                            glslang-tools \
-                           libwayland-dev
-      - name: Build libfmt
+                           libwayland-dev \
+                           libdecor-0-dev \
+                           curl
+      - name: Install Vcpkg
         run: |
-          git clone https://github.com/fmtlib/fmt
-          cd fmt
-          mkdir build && cd build
-          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Debug
-          ninja
-          sudo ninja install
+          git clone https://github.com/microsoft/vcpkg
+          ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+          sudo ./vcpkg/vcpkg integrate install
       - name: Generate build files
         env:
           CC: /usr/bin/clang-12
           CXX: /usr/bin/clang++-12
+          VCPKG_ROOT: ${{github.workspace}}/vcpkg
         run: |
           mkdir build && cd build
           cmake .. -GNinja \
                    -DCMAKE_BUILD_TYPE=Debug \
-                   -DENABLE_VCPKG=OFF \
                    -DBUILD_TESTS=ON
       - name: Run build-wrapper
         run: |
