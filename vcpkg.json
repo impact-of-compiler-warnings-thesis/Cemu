@@ -15,7 +15,10 @@
       "default-features": false
     },
     "rapidjson",
-    "sdl2",
+    {
+      "name": "sdl2",
+      "features": ["wayland"]
+    },
     "boost-tokenizer",
     "boost-container",
     "boost-program-options",

@@ -44,6 +44,8 @@ jobs:
                            glslang-tools \
                            libwayland-dev \
                            libdecor-0-dev \
+                           libxft-dev \
+                           libxext-dev \
                            curl
       - name: Install Vcpkg
         run: |
